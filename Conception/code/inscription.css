@@ -1,0 +1,34 @@
+body {
+    background-color: #DADDF5;
+    display: block;
+    text-align: center;
+}
+
+.mail, .login, .mdp {
+    position: relative;
+}
+
+input {
+    background-color: #EFEFEF;
+    border: none;
+    height: 30px;
+    margin-bottom: 35px;
+}
+
+input:focus{
+    outline: none;
+}
+
+span {
+    user-select: none;
+    position: absolute;
+    left: 46%;
+    top: 5px;
+    transition: 0.5s;
+}
+
+.mail input:focus + span,
+.login input:focus + span,
+.mdp input:focus + span {
+    transform: translateY(-10px) translateX(-15px) scale(70%);
+}

@@ -1,0 +1,43 @@
+body {
+    background-color: #DADDF5;
+}
+
+.bandeau {
+    background-color: #1C245C;
+    position: absolute;
+    width: 1920px;
+    height: 350px;
+    left: 0px;
+    top: 0px;
+}
+
+.bandeau .lien {
+    text-align: right;
+    padding: 10px;
+}
+
+.bandeau .lien a{
+    color: #FFEBBF;
+    padding-right: 12px;
+    text-decoration: none;
+}
+
+.bandeau .titre {
+    color: #FFEBBF;
+    text-align: center;
+    font-family: 'Martel';
+    font-style: normal;
+    font-size: 40px;
+    line-height: 67px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+.bandeau .boutton {
+    text-align: center;
+}
+
+.bandeau .boutton button {
+    margin-right: 20px;
+    margin-left: 20px;
+}

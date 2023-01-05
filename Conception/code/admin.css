@@ -1,0 +1,21 @@
+body {
+    background-color: #DADDF5;
+}
+
+h2 {
+    color: #FFEBBF;
+    font-size: 18px;
+}
+
+.sidemenu {
+    background-color: #1C245C;
+    width: 400px;
+    height: 1080px;
+}
+
+.sidemenu a{
+    color: #FFEBBF;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+}
