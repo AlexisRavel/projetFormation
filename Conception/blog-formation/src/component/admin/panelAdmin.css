@@ -1,0 +1,47 @@
+h3{
+    text-align: center;
+    color: #FFEBBF;
+    padding-top: 20px;
+    margin-bottom: 100px;
+    font-family: 'Rubik', sans-serif;
+}
+
+h4{
+    color: #FFEBBF;
+    padding-left: 30px;
+    margin-bottom: 8px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.panneau {
+    background-color: #1C245C;
+    width: 15%;
+    height: 100vh;
+  }
+
+.menuPanel {
+    margin-bottom: 100px;
+}
+
+.menuPanel p {
+    padding-left: 45px;
+    color: #DADDF5;
+}
+
+.gestion {
+    background-color: #DADDF5;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 85%;
+    height: 100vh;
+    text-align: center;
+}
+
+.top {
+    margin-top: 120px;
+}
+
+.topArticle {
+    padding: 40px 65vh 0px 65vh;
+}

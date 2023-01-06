@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+}
+
+h1 {
+  color: #FFEBBF;
+  font-family: 'Martel', serif;
+  text-align: center;
+  padding: 60px 0px 20px 0px;
+}
+
+.bandeau {
+  background-color: #1C245C;
+  height: 30vh;
+}
+
+.liens {
+  text-align: right;
+}
+
+.liens button {
+  color: #FFEBBF;
+  background-color: #1C245C;
+  border: none;
+  padding: 10px 25px 0px 0px;
+}
+
+.sujetsButton {
+  text-align: center;
+}
+
+.sujetsButton button {
+  margin: 80px 40px 40px 40px;
+}
+
+.contenu {
+  background-color: #DADDF5;
+  height: 60vh;
+  padding: 10vh 75vh 0px 75vh;
+  text-align: center;
+}
+
+.inscription {
+  background-color: #DADDF5;
+  height: 100vh;
+  text-align: center;
+  padding-top: 25vh;
+}
+
+.article {
+  background-color: #DADDF5;
+  height: 70vh;
+  text-align: center;
+}
