@@ -33,15 +33,15 @@ p {
     outline: none;
 }
 
-.inscription .champs input:focus + span, 
-.inscription .champs input:valid + span {
+.inscription .champs input:focus+span,
+.inscription .champs input:valid+span {
     transform: translateY(-20px) translateX(-5px);
 }
 
-.inscription .champs .verif{
+.inscription .champs .verif {
     background-color: #1C245C;
-    margin-left: 90vh;
-    margin-right: 90vh;
+    margin-left: 88vh;
+    margin-right: 88vh;
     border-radius: 10px;
     margin-top: 30px;
     color: #FFEBBF;

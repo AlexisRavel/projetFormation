@@ -22,7 +22,11 @@ h1 {
   color: #FFEBBF;
   background-color: #1C245C;
   border: none;
-  padding: 10px 25px 0px 0px;
+  margin: 10px 25px 0px 0px;
+}
+
+.liens button:hover {
+  border-bottom: 1px solid #FFEBBF;
 }
 
 .sujetsButton {

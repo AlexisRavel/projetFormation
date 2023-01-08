@@ -3,15 +3,11 @@ import React from "react";
 import './panelAdmin.css';
 
 class PanelAdmin extends React.Component {
-    retour(page) {
-        this.props.redirection(page)
-    }
-
     render() {
         return (
             <div className="panelAdmin">
-                <Panneau redir={(page) => this.retour(page)}></Panneau>
-                <Gestion redir={(page) => this.retour(page)}></Gestion>
+                <Panneau redir={(page) => this.props.redirection(page)}></Panneau>
+                <Gestion redir={(page) => this.props.redirection(page)}></Gestion>
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React from 'react'
 
 import './article.css'
 import Liens from '../bandeau/liens'
-import Sujets from '../bandeau/sujets'
 
 class ArticleTemplate extends React.Component {
     changePage(page) {
@@ -14,11 +13,11 @@ class ArticleTemplate extends React.Component {
             <div>
                 <div className='bandeauArticle'>
                     <Liens nouvellePage={(page) => this.changePage(page)}></Liens>
-                    <Sujets></Sujets>
+                    <Titre></Titre>
                 </div>
                 <div className='contenuArticle'>
-                    <button onClick={() => this.changePage('accueil')}>retour</button>
-                    <h2>Titre article</h2>
+                    <button onClick={() => this.changePage('accueil')}>➜</button>
+                    <h2>Sous-Titre</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -30,6 +29,10 @@ class ArticleTemplate extends React.Component {
         )
     }
 }
+
+function Titre() {
+    return <h1>Titre Article</h1>
+  }
 
 
 export default ArticleTemplate

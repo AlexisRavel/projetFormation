@@ -9,6 +9,7 @@ import Inscription from './component/inscription/inscription';
 import ArticleTemplate from './component/article/articleTemplate';
 import PanelAdmin from './component/admin/panelAdmin';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,47 +18,39 @@ class App extends React.Component {
     };
   }
 
-  changeState(page) {
-    this.setState({aff: page})
-  }
-
   render() {
     switch (this.state.aff) {
       case 'accueil':
-        return (<Accueil redirection={(page) => this.changeState(page)}></Accueil>)
+        return (<Accueil redirection={(page) => this.setState({aff: page})}></Accueil>)
       case 'inscription':
-        return (<Inscription redirection={(page) => this.changeState(page)}></Inscription>)
+        return (<Inscription redirection={(page) => this.setState({aff: page})}></Inscription>)
       case 'article':
-        return (<ArticleTemplate redirection={(page) => this.changeState(page)}></ArticleTemplate>)
+        return (<ArticleTemplate redirection={(page) => this.setState({aff: page})}></ArticleTemplate>)
       case 'admin':
-        return (<PanelAdmin redirection={(page) => this.changeState(page)}></PanelAdmin>)
+        return (<PanelAdmin redirection={(page) => this.setState({aff: page})}></PanelAdmin>)
       default:
-        return (<Accueil redirection={(page) => this.changeState(page)}></Accueil>)
+        return (<Accueil redirection={(page) => this.setState({aff: page})}></Accueil>)
     }
   }
 }
 
 class Accueil extends React.Component {
-  changePage(page) {
-    this.props.redirection(page)
-  }
-
   render() {
     return (
       <div>
         <div className='bandeau'>
-          <Liens nouvellePage={(page) => this.changePage(page)}></Liens>
+          <Liens nouvellePage={(page) => this.props.redirection(page)}></Liens>
           <Titre></Titre>
           <Sujets></Sujets>
         </div>
-        <Contenu nouvellePage={(page) => this.changePage(page)}></Contenu>
+        <Contenu nouvellePage={(page) => this.props.redirection(page)}></Contenu>
       </div>
     )
   }
 }
 
 function Titre() {
-  return <h1>Titre</h1>
+  return <h1>Le MegaBlog</h1>
 }
 
 
