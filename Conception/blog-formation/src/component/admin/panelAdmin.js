@@ -14,14 +14,10 @@ class PanelAdmin extends React.Component {
 }
 
 class Panneau extends React.Component {
-    changePage(page) {
-        this.props.redir(page)
-    }
-
     render() {
         return (
             <div className="panneau">
-                <h3 onClick={() => this.changePage('accueil')}>Retour sur le site</h3>
+                <h3 onClick={() => this.props.redir('accueil')}>Retour sur le site</h3>
                 <div className="menuPanel">
                     <h4>Gestion des articles</h4>
                     <p>Nouvel article</p>
@@ -44,17 +40,13 @@ class Panneau extends React.Component {
 }
 
 class Gestion extends React.Component {
-    changePage(page) {
-        this.props.redir(page)
-    }
-
     render() {
         return (
             <div className="gestion">
                 <div className="top">
                     <h2>Top</h2>
                     <div className="topArticle">
-                        <h2 onClick={() => this.changePage('article')}>Titre article</h2>
+                        <h2 onClick={() => this.props.redir('article')}>Titre article</h2>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
