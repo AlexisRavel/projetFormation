@@ -2,8 +2,14 @@ h3{
     text-align: center;
     color: #FFEBBF;
     padding-top: 20px;
-    margin-bottom: 100px;
+    margin: 0px 70px 100px 70px;
     font-family: 'Rubik', sans-serif;
+    transition: 0.5s;
+}
+
+h3:hover {
+    transform: translateY(3px);
+    border-bottom: 1px solid #FFEBBF;
 }
 
 h4{
@@ -11,6 +17,10 @@ h4{
     padding-left: 30px;
     margin-bottom: 8px;
     font-family: 'Rubik', sans-serif;
+}
+
+.link {
+    text-decoration: none;
 }
 
 .panneau {

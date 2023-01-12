@@ -3,8 +3,7 @@ p {
     text-align: left;
 }
 
-.inscription button {
-    background-color: #DADDF5;
+.inscription .link {
     color: #000000;
     border: none;
     border-radius: 5px;
@@ -14,7 +13,7 @@ p {
     transition: 0.3s;
 }
 
-.inscription button:hover {
+.inscription .link:hover {
     background-color: #1C245C;
     color: #FFEBBF;
 }
@@ -44,6 +43,7 @@ p {
     margin-right: 88vh;
     border-radius: 10px;
     margin-top: 30px;
+    margin-bottom: 20px;
     color: #FFEBBF;
 }
 

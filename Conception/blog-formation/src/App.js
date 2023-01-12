@@ -1,36 +1,38 @@
-import React from 'react';
+import React, {Suspense} from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import './App.css';
 
-import Liens from './component/bandeau/liens';
-import Sujets from './component/bandeau/sujets';
-import Contenu from './component/contenu/contenu';
-import Inscription from './component/inscription/inscription';
-import ArticleTemplate from './component/article/articleTemplate';
-import PanelAdmin from './component/admin/panelAdmin';
+const Liens = React.lazy(() => import('./component/bandeau/liens'));
+const Sujets = React.lazy(() => import('./component/bandeau/sujets'));
+const Contenu = React.lazy(() => import('./component/contenu/contenu'));
+const Inscription = React.lazy(() => import('./component/inscription/inscription'));
+const ArticleTemplate = React.lazy(() => import('./component/article/articleTemplate'));
+const PanelAdmin = React.lazy(() => import('./component/admin/panelAdmin'));
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      aff: 'test',
+      aff: 'accueil',
     };
   }
 
   render() {
-    switch (this.state.aff) {
-      case 'accueil':
-        return (<Accueil redirection={(page) => this.setState({aff: page})}></Accueil>)
-      case 'inscription':
-        return (<Inscription redirection={(page) => this.setState({aff: page})}></Inscription>)
-      case 'article':
-        return (<ArticleTemplate redirection={(page) => this.setState({aff: page})}></ArticleTemplate>)
-      case 'admin':
-        return (<PanelAdmin redirection={(page) => this.setState({aff: page})}></PanelAdmin>)
-      default:
-        return (<Accueil redirection={(page) => this.setState({aff: page})}></Accueil>)
-    }
+    return (
+      <Router>
+        <Suspense fallback={<div>Chargement ...</div>}>
+          <Routes>
+            <Route index element={<Accueil/>}></Route>
+            <Route path='/inscription' element={<Inscription/>}></Route>
+            <Route path='/admin' element={<PanelAdmin/>}></Route>
+            <Route path='/article' element={<ArticleTemplate/>}></Route>
+          </Routes>
+        </Suspense>
+      </Router>
+    )
   }
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import './panelAdmin.css';
 
@@ -6,8 +7,8 @@ class PanelAdmin extends React.Component {
     render() {
         return (
             <div className="panelAdmin">
-                <Panneau redir={(page) => this.props.redirection(page)}></Panneau>
-                <Gestion redir={(page) => this.props.redirection(page)}></Gestion>
+                <Panneau></Panneau>
+                <Gestion></Gestion>
             </div>
         )
     }
@@ -17,7 +18,7 @@ class Panneau extends React.Component {
     render() {
         return (
             <div className="panneau">
-                <h3 onClick={() => this.props.redir('accueil')}>Retour sur le site</h3>
+                <Link to='/' className="link"><h3>Retour sur le site</h3></Link>
                 <div className="menuPanel">
                     <h4>Gestion des articles</h4>
                     <p>Nouvel article</p>

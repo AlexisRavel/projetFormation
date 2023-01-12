@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import './inscription.css'
 
@@ -7,8 +8,8 @@ class Inscription extends React.Component {
         return (
             <div className="inscription">
                 <Champs></Champs>
-                <button onClick={() => this.props.redirection('accueil')}>Annuler</button>
-                <button onClick={() => this.props.redirection('accueil')}>Valider</button>
+                <Link to='/' className="link">Annuler</Link>
+                <Link to='/' className="link">Valider</Link>
             </div>
         )
     }
