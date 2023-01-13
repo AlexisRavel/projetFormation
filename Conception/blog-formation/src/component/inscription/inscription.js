@@ -4,18 +4,6 @@ import { Link } from "react-router-dom";
 import './inscription.css'
 
 class Inscription extends React.Component {
-    render() {
-        return (
-            <div className="inscription">
-                <Champs></Champs>
-                <Link to='/' className="link">Annuler</Link>
-                <button>Valider</button>
-            </div>
-        )
-    }
-}
-
-class Champs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,8 +14,8 @@ class Champs extends React.Component {
           mdp: "",
           validMdp: false
         };
-      }
-    
+    }
+
     mailChange=(event)=>{
         this.setState({
             mail:event.target.value
@@ -71,6 +59,15 @@ class Champs extends React.Component {
             this.setState({
                 validMdp: false
             })
+        }
+    }
+
+    validInscription=(event)=>{
+        event.preventDefault()
+        if(this.state.validMail == true && this.state.validLogin == true && this.state.validMdp == true) {
+            alert("ui")
+        } else {
+            alert("Informations incorrects")
         }
     }
 
@@ -119,29 +116,36 @@ class Champs extends React.Component {
         }
 
         return (
-            <div className="champs">
-                <div>
-                    <input type='text' value={this.state.mail} onChange={this.mailChange} required></input>
-                    <span style={{color:mailColor}}>Mail</span>
+            <form onSubmit={this.validInscription}>
+                <div className="inscription">
+                    <div className="champs">
+                        <div>
+                            <input type='text' value={this.state.mail} onChange={this.mailChange} required></input>
+                            <span style={{color:mailColor}}>Mail</span>
+                        </div>
+                        <div>
+                            <input type='text' value={this.state.login} onChange={this.loginChange} required></input>
+                            <span style={{color:idColor}}>Identifiants</span>
+                        </div>
+                        <div>
+                            <input type='password' value={this.state.mdp} onChange={this.mdpChange} required></input>
+                            <span style={{color:mdpColor}}>Mot de passe</span>
+                        </div>
+                        <div className="verif">
+                            <p style={{color:lonColor}}>8 caractères</p>
+                            <p style={{color:minColor}}>Minuscule</p>
+                            <p style={{color:majColor}}>Majuscule</p>
+                            <p style={{color:chiColor}}>Chiffre</p>
+                            <p style={{color:carColor}}>Caractère spéciaux</p>
+                        </div>
+                    </div>
+                    <Link to='/' className="link">Annuler</Link>
+                    <input type="submit" value="Valider" className="submit"></input>
                 </div>
-                <div>
-                    <input type='text' value={this.state.login} onChange={this.loginChange} required></input>
-                    <span style={{color:idColor}}>Identifiants</span>
-                </div>
-                <div>
-                    <input type='password' value={this.state.mdp} onChange={this.mdpChange} required></input>
-                    <span style={{color:mdpColor}}>Mot de passe</span>
-                </div>
-                <div className="verif">
-                    <p style={{color:lonColor}}>8 caractères</p>
-                    <p style={{color:minColor}}>Minuscule</p>
-                    <p style={{color:majColor}}>Majuscule</p>
-                    <p style={{color:chiColor}}>Chiffre</p>
-                    <p style={{color:carColor}}>Caractère spéciaux</p>
-                </div>
-            </div>
+            </form>
         )
     }
 }
+
 
 export default Inscription

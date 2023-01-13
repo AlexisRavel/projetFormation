@@ -3,9 +3,12 @@ p {
     text-align: left;
 }
 
-.inscription .link {
+.inscription .link,
+.inscription .submit {
+    background-color: #DADDF5;
     color: #000000;
     border: none;
+    text-decoration: none;
     border-radius: 5px;
     font-family: 'Martel', serif;
     font-size: 16px;
@@ -14,7 +17,8 @@ p {
     transition: 0.3s;
 }
 
-.inscription .link:hover {
+.inscription .link:hover,
+.inscription .submit:hover {
     background-color: #1C245C;
     color: #FFEBBF;
 }
