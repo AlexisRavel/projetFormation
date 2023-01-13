@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './article.css'
 import Liens from '../bandeau/liens'
@@ -8,11 +9,11 @@ class ArticleTemplate extends React.Component {
         return (
             <div>
                 <div className='bandeauArticle'>
-                    <Liens changePage={(page) => this.props.redirection(page)}></Liens>
+                    <Liens></Liens>
                     <Titre></Titre>
                 </div>
                 <div className='contenuArticle'>
-                    <button onClick={() => this.props.redirection('accueil')}>➜</button>
+                    <Link to='/'><button>➜</button></Link>
                     <h2>Sous-Titre</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 

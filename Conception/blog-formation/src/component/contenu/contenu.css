@@ -1,3 +1,18 @@
 .contenu h2 {
     text-align: left;
+    transition: 0.5s;
+}
+
+.contenu p {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.link{
+    color: #1C245C;
+    text-decoration: none;
+}
+
+.link h2:hover {
+    transform: translateX(8px);
 }

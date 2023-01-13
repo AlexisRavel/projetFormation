@@ -7,14 +7,14 @@ class PanelAdmin extends React.Component {
     render() {
         return (
             <div className="panelAdmin">
-                <Panneau></Panneau>
+                <Menu></Menu>
                 <Gestion></Gestion>
             </div>
         )
     }
 }
 
-class Panneau extends React.Component {
+class Menu extends React.Component {
     render() {
         return (
             <div className="panneau">
@@ -47,7 +47,7 @@ class Gestion extends React.Component {
                 <div className="top">
                     <h2>Top</h2>
                     <div className="topArticle">
-                        <h2 onClick={() => this.props.redir('article')}>Titre article</h2>
+                        <Link to="/article" className="link"><h2>Titre article</h2></Link>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

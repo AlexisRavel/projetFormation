@@ -23,6 +23,16 @@ h4{
     text-decoration: none;
 }
 
+.link h2{
+    color: #1C245C;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.link h2:hover {
+    transform: translatey(-8px);
+}
+
 .panneau {
     background-color: #1C245C;
     width: 15%;

@@ -1634,7 +1634,7 @@
 										"$ref": "AAAAAAGFfU9cfM2LOBo="
 									},
 									"edgePosition": 2,
-									"text": "*"
+									"text": "1"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3355,7 +3355,8 @@
 								"$ref": "AAAAAAGFfUKqeJy1FaU="
 							},
 							"name": "datePublication",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3623,7 +3624,7 @@
 								"reference": {
 									"$ref": "AAAAAAGFfU8c4spoB2M="
 								},
-								"multiplicity": "*"
+								"multiplicity": "1"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",

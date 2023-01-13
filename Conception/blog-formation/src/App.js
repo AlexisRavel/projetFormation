@@ -41,11 +41,11 @@ class Accueil extends React.Component {
     return (
       <div>
         <div className='bandeau'>
-          <Liens nouvellePage={(page) => this.props.redirection(page)}></Liens>
+          <Liens></Liens>
           <Titre></Titre>
           <Sujets></Sujets>
         </div>
-        <Contenu nouvellePage={(page) => this.props.redirection(page)}></Contenu>
+        <Contenu></Contenu>
       </div>
     )
   }

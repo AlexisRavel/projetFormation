@@ -9,7 +9,7 @@ class Inscription extends React.Component {
             <div className="inscription">
                 <Champs></Champs>
                 <Link to='/' className="link">Annuler</Link>
-                <Link to='/' className="link">Valider</Link>
+                <button>Valider</button>
             </div>
         )
     }
@@ -19,14 +19,45 @@ class Champs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          mail: null,
+          mail: "",
           validMail: false,
-          login: null,
+          login: "",
           validLogin: false,
           mdp: "",
           validMdp: false
         };
       }
+    
+    mailChange=(event)=>{
+        this.setState({
+            mail:event.target.value
+        })
+        var expressionReguliere = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(event.target.value.match(expressionReguliere)) {
+            this.setState({
+                validMail: true
+            })
+        } else {
+            this.setState({
+                validMail: false
+            })
+        }
+    }
+
+    loginChange=(event)=>{
+        this.setState({
+            login:event.target.value
+        })
+        if(event.target.value.length < "6" || event.target.value.match(/[`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
+            this.setState({
+                validLogin: false
+            })
+        } else {
+            this.setState({
+                validLogin: true
+            })
+        }
+    }
     
     mdpChange=(event)=>{
         this.setState({
@@ -36,10 +67,35 @@ class Champs extends React.Component {
             this.setState({
                 validMdp: true
             })
+        } else {
+            this.setState({
+                validMdp: false
+            })
         }
     }
 
     render() {
+        let idColor = "#000000"
+        if(this.state.validLogin == true) {
+            idColor = "green"
+        } else {
+            idColor = "#000000"
+        }
+
+        let mdpColor = "#000000"
+        if(this.state.validMdp == true) {
+            mdpColor = "green"
+        } else {
+            mdpColor = "#000000"
+        }
+
+        let mailColor = "#000000"
+        if(this.state.validMail == true) {
+            mailColor = "green"
+        } else {
+            mailColor = "#000000"
+        }
+
         let lonColor = "red", minColor = "red", majColor = "red", chiColor = "red", carColor = "red";
         if(this.state.mdp.length >= "8")
         {
@@ -65,16 +121,16 @@ class Champs extends React.Component {
         return (
             <div className="champs">
                 <div>
-                    <input type='text' required></input>
-                    <span>Mail</span>
+                    <input type='text' value={this.state.mail} onChange={this.mailChange} required></input>
+                    <span style={{color:mailColor}}>Mail</span>
                 </div>
                 <div>
-                    <input type='text' required></input>
-                    <span>Identifiants</span>
+                    <input type='text' value={this.state.login} onChange={this.loginChange} required></input>
+                    <span style={{color:idColor}}>Identifiants</span>
                 </div>
                 <div>
                     <input type='password' value={this.state.mdp} onChange={this.mdpChange} required></input>
-                    <span>Mot de passe</span>
+                    <span style={{color:mdpColor}}>Mot de passe</span>
                 </div>
                 <div className="verif">
                     <p style={{color:lonColor}}>8 caractères</p>

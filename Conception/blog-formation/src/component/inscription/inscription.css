@@ -10,6 +10,7 @@ p {
     font-family: 'Martel', serif;
     font-size: 16px;
     margin: 50px 10px 0px 10px;
+    padding: 2px;
     transition: 0.3s;
 }
 
@@ -49,7 +50,7 @@ p {
 
 .inscription .champs span {
     position: absolute;
-    user-select: none;
+    pointer-events: none;
     text-align: center;
     left: 93vh;
     transition: 0.2s;
