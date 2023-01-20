@@ -1,0 +1,55 @@
+p {
+    padding: 10px 0px 10px 20px;
+    text-align: left;
+}
+
+.connexion .link,
+.connexion .submit {
+    background-color: #DADDF5;
+    color: #000000;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Martel', serif;
+    font-size: 16px;
+    margin: 30px 10px 0px 10px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.connexion .link:hover,
+.connexion .submit:hover {
+    background-color: #1C245C;
+    color: #FFEBBF;
+}
+
+.connexion .submit:disabled{
+    background-color: gray;
+}
+
+.connexion .champs div {
+    padding: 10px 0px 10px 0px;
+}
+
+.connexion .champs input {
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.connexion .champs input:focus {
+    outline: none;
+}
+
+.connexion .champs input:focus+span,
+.connexion .champs input:valid+span {
+    transform: translateY(-20px) translateX(-5px);
+}
+
+.connexion .champs span {
+    position: absolute;
+    pointer-events: none;
+    text-align: center;
+    left: 93vh;
+    transition: 0.2s;
+}

@@ -43,7 +43,7 @@ h1 {
   text-align: center;
 }
 
-.inscription {
+.inscription, .connexion {
   background-color: #DADDF5;
   height: 100vh;
   text-align: center;

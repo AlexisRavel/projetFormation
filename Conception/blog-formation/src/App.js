@@ -1,6 +1,5 @@
 import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from "react-router-dom";
 
 import './App.css';
 
@@ -10,6 +9,7 @@ const Contenu = React.lazy(() => import('./component/contenu/contenu'));
 const Inscription = React.lazy(() => import('./component/inscription/inscription'));
 const ArticleTemplate = React.lazy(() => import('./component/article/articleTemplate'));
 const PanelAdmin = React.lazy(() => import('./component/admin/panelAdmin'));
+const Connexion = React.lazy(() => import("./component/connexion/connexion"));
 
 
 class App extends React.Component {
@@ -29,6 +29,7 @@ class App extends React.Component {
             <Route path='/inscription' element={<Inscription/>}></Route>
             <Route path='/admin' element={<PanelAdmin/>}></Route>
             <Route path='/article' element={<ArticleTemplate/>}></Route>
+            <Route path='/connexion' element={<Connexion/>}></Route>
           </Routes>
         </Suspense>
       </Router>
