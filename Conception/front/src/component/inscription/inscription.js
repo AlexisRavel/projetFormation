@@ -13,8 +13,16 @@ class Inscription extends React.Component {
           login: "",
           validLogin: false,
           mdp: "",
-          validMdp: false
+          validMdp: false,
+          users: null
         };
+    }
+
+    componentDidMount() {
+        axios.get(`http://127.0.0.1:8000/api/users`)
+                .then(res => {
+                    this.setState({users: res.data["hydra:member"]})
+                })
     }
 
     mailChange=(event)=>{
@@ -37,7 +45,7 @@ class Inscription extends React.Component {
         this.setState({
             login:event.target.value
         })
-        if(event.target.value.length < "6" || event.target.value.match(/[`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
+        if(event.target.value.length < "4" || event.target.value.match(/[`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
             this.setState({
                 validLogin: false
             })
@@ -67,14 +75,21 @@ class Inscription extends React.Component {
         event.preventDefault()
         if(this.state.validMail == true && this.state.validLogin == true && this.state.validMdp == true) {
             const user = {
-                login: this.state.login
+                mail: this.state.mail,
+                login: this.state.login,
+                mdp: this.state.mdp
             };
-
-            axios.post(`https://localhost/server.php`, { user })
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
+            
+            for(let i=0; i<this.state.users.length; i++) {
+                if(this.state.users[i].mail == user.mail) {
+                    alert("Mail déjà utilisé");
+                    return;
+                }
+                if(this.state.users[i].username == user.login) {
+                    alert("Nom d'utilisateur déjà pris");
+                    return;
+                }
+            }
         } else {
             alert("Informations incorrects")
         }

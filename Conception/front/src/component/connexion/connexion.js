@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import './connexion.css'
 
@@ -14,11 +15,19 @@ class Connexion extends React.Component {
         }
     }
 
+    componentDidMount() {
+        axios.get(`http://127.0.0.1:8000/api/users`)
+                .then(res => {
+                    //this.setState({users: res.data["hydra:member"]})
+                    console.log(res.data["hydra:member"])
+                })
+    }
+
     loginChange=(event)=> {
         this.setState({
             login:event.target.value
         })
-        if(event.target.value.length < "6" || event.target.value.match(/[`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
+        if(event.target.value.length < "4" || event.target.value.match(/[`~!@#$%\^&*()+=|;:'",.<>\/?\\\-]/)) {
             this.setState({
                 validLogin: false
             })

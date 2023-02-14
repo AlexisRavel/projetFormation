@@ -1,31 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import './contenu.css'
 
 class Contenu extends React.Component {
+    constructor(props) {
+      super();
+      this.state = {
+        isLoading: true,
+        articles: null,
+      }  
+    }
+
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8000/api/articles')
+            .then(res => {
+                const articles = res.data["hydra:member"];
+                this.setState({
+                    articles: articles,
+                    isLoading: false
+                });
+            })
+    }
+
     render() {
-        return (
-            <div className="contenu">
-                 <Link to="/article" className="link"><h2>Titre article</h2></Link>
-                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <Link to="/article" className="link"><h2>Titre article</h2></Link>
-                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <Link to="/article" className="link"><h2>Titre article</h2></Link>
-                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </div>
-        )
+        if(this.state.isLoading==false) {
+            return (
+                <div className="contenu">
+                    {this.state.articles.map(article => (
+                        <div>
+                            <Link to="/article" className="link"><h2>{article.titre}</h2></Link>
+                            <p>{article.contenu}</p>
+                        </div>
+                    ))}
+                </div>
+            )
+        } else {
+            return (
+                <div className="contenu">
+                    <p>loading...</p>
+                </div>
+            )
+        }
     }
 }
+
+
 
 
 export default Contenu

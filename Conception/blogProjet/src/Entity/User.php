@@ -9,23 +9,34 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ApiResource(
+    collectionOperations: ['get'],
+    itemOperations: ['get', "put", "delete"],
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['user:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Groups(['article:read'])]
     private ?string $username = null;
 
     #[ORM\Column]
+    #[Groups(['article:read'])]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Groups(['article:read'])]
     private ?string $password = null;
 
     #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Commentaire::class)]
@@ -33,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
 
     #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Article::class)]
     private Collection $articles;
+
+    #[ORM\Column(length: 255)]
+    private ?string $mail = null;
 
     public function __construct() {
         $this->commentaires = new ArrayCollection();
@@ -163,6 +177,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
                 $article->setAuteur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }
