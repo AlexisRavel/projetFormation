@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 import './inscription.css'
@@ -65,7 +66,15 @@ class Inscription extends React.Component {
     validInscription=(event)=>{
         event.preventDefault()
         if(this.state.validMail == true && this.state.validLogin == true && this.state.validMdp == true) {
-            alert("ui")
+            const user = {
+                login: this.state.login
+            };
+
+            axios.post(`https://localhost/server.php`, { user })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
         } else {
             alert("Informations incorrects")
         }
