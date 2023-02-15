@@ -1,10 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 import './panelAdmin.css';
 
 class PanelAdmin extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            user: null
+        };
+    }
+
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8000/admin')
+            .then(res => {
+                this.setState({
+                    user: res.data["user"],
+                });
+            })
+    }
+
     render() {
+        if(this.state.user == null) {
+            return <Navigate to="/connexion" replace={true}/>
+        }
         return (
             <div className="panelAdmin">
                 <Menu></Menu>

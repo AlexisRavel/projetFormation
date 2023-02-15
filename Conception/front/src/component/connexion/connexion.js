@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 import './connexion.css'
@@ -13,14 +13,6 @@ class Connexion extends React.Component {
             mdp: "",
             validMdp: false
         }
-    }
-
-    componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/api/users`)
-                .then(res => {
-                    //this.setState({users: res.data["hydra:member"]})
-                    console.log(res.data["hydra:member"])
-                })
     }
 
     loginChange=(event)=> {
@@ -53,9 +45,27 @@ class Connexion extends React.Component {
         }
     }
 
+    validConnexion=(event)=>{
+        event.preventDefault()
+        if(this.state.validLogin == true && this.state.validMdp == true) {
+            const user = {
+                login: this.state.login,
+                mdp: this.state.mdp
+            };
+            
+            axios.post('http://127.0.0.1:8000/connexion', {"login": this.state.login, "mdp": this.state.mdp})
+            .then(res => {
+                console.log(res.data)
+                return <Navigate to="/admin" replace={true}/>
+            })
+        } else {
+            alert("Informations incorrects")
+        }
+    }
+
     render() {
         return (
-            <form action="/admin">
+            <form onSubmit={this.validConnexion}>
                 <div className="connexion">
                     <div className="champs">
                         <div>
