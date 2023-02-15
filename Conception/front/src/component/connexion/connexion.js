@@ -11,7 +11,8 @@ class Connexion extends React.Component {
             login: "",
             validLogin: false,
             mdp: "",
-            validMdp: false
+            validMdp: false,
+            user: null
         }
     }
 
@@ -45,7 +46,7 @@ class Connexion extends React.Component {
         }
     }
 
-    validConnexion=(event)=>{
+    validConnexion = async (event)=> {
         event.preventDefault()
         if(this.state.validLogin == true && this.state.validMdp == true) {
             const user = {
@@ -53,17 +54,20 @@ class Connexion extends React.Component {
                 mdp: this.state.mdp
             };
             
-            axios.post('http://127.0.0.1:8000/connexion', {"login": this.state.login, "mdp": this.state.mdp})
-            .then(res => {
-                console.log(res.data)
-                return <Navigate to="/admin" replace={true}/>
-            })
+            const resp = await axios.post('http://127.0.0.1:8000/connexion', {"login": this.state.login, "mdp": this.state.mdp});
+            this.setState({
+                user: resp.data
+            });
+            localStorage.setItem('user', JSON.stringify(resp.data));
         } else {
             alert("Informations incorrects")
         }
     }
 
     render() {
+        if(this.state.user) {
+            return <Navigate to="/admin" replace={true}/>
+        }
         return (
             <form onSubmit={this.validConnexion}>
                 <div className="connexion">

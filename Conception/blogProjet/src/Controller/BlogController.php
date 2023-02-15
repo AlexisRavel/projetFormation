@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -37,7 +36,7 @@ class BlogController extends AbstractController
         $data = json_decode($req->getContent(), true);
         $user = $userRepo->findOneBy(["username" => [$data["login"]]]);
         if($user && $user->getPassword() == $passwordHasher->isPasswordValid($user, $data["mdp"])) {
-            return $this->json(["validation"=> true]);
+            return $this->json($user);
         }
         return $this->json(["validation"=> false]);
     }
